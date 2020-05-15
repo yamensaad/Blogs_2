@@ -14,7 +14,7 @@
 <input type="text" class="form-control" name="email" />
 </div>
 <div class="form-group pull-right">
-<button class='btn btn-info' > Send </button>
+<button class='btn btn-info' > Send to me  </button>
 </div>
 </form>
 
