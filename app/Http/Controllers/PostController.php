@@ -49,7 +49,8 @@ class PostController extends Controller
       $post->title = $request->input('title');
       $post->body = $request->input('body');
       $post->save();
-      return redirect('/posts');
+
+      return redirect('/posts')->with('success','Post Created Successfully');
 
         
     }
@@ -62,7 +63,11 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return $post;
+        return view('posts.show',compact('post'));
+
+
     }
 
     /**
@@ -73,7 +78,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return $post;
+        return view('posts.edit',compact('post'));
+        
     }
 
     /**
