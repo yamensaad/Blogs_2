@@ -7,6 +7,8 @@
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script src="   https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+    
  
 </head>
 <body>
