@@ -1,15 +1,18 @@
+
+
 @extends('layouts.default')
 
-@section('content')
-@foreach($posts as $post)
-<div class="panel">
-<div class="panel-heading">
-<h3>{{$post->title}}</h3>
-</div>
 
-<div class= "panel-body">
-{{$post->body}}
-</div>
-</div>
+@section('content')
+@if($posts->count()>0)
+@foreach($posts as $post)
+
+
 @endforeach
+{{$posts->links()}}
+@else
+<div class="alert alert-info">
+<strong>OPPs </strong> noposts
+</div>
+@endif
 @endsection
