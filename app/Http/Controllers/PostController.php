@@ -40,7 +40,11 @@ class PostController extends Controller
     {
       ///$postTittle = $request->input('title');
       //return $postTittle;
-      
+      $request->validate([
+          'title' =>'required',
+          'body' => 'required'
+
+      ]);
       $post = new Post();
       $post->title = $request->input('title');
       $post->body = $request->input('body');
