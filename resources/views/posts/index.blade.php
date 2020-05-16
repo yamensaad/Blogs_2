@@ -1,23 +1,28 @@
+  
 @extends('layouts.default')
 
 @section('content')
-
-<div class="col-md-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Posts</div>
-                <div class="panel-body">
-                
-             
-                    @foreach($posts as $post)
-                        <a href="/posts/{{$post->id}}}" class="btn btn-primary btn-xs">
-                           
-                            {{$post->body }}
+    @if($posts->count() > 0 )
+        @foreach($posts as $post)
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3>
+                        <a href="/posts/{{$post->id}}">
+                            {{ $post->title }}
                         </a>
-                    @endforeach
+                    </h3>
+                </div>
+
+                <div class="panel-body">
+                    {{ $post->body }}
                 </div>
             </div>
-            
+        @endforeach
+        {{ $posts->links() }}
+    @else
+        <div class="alert alert-info">
+            <strong>Ops</strong> No Posts
         </div>
-
+    @endif
 
 @endsection

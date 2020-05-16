@@ -49,7 +49,7 @@ class PostController extends Controller
       $post = new Post();
       $post->title = $request->input('title');
       $post->body = $request->input('body');
-      $slug = str_replace('','-',strtolower($post->title));
+      $post->slug = str_replace('','-',strtolower($post->title));
 
       $post->save();
 
@@ -64,9 +64,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::find($id);
+        $post = Post::where('slug',$slug)->first();
+
         return view('posts.show',compact('post'));
 
     }
