@@ -1,10 +1,10 @@
 @extends('layouts.default')
 
 @section('content')
-<h1>Edit {{$post->title}}</h1>  
+<h1>Edit {{$post->title}}</h1>
 <hr/>
 {!! Form::open(['action'=>['PostController@update',$post->id] ,'method'=>'POST']) !!}
-
+{{Fom::hidden('_method','PUTT')}}
 <div class="form-group">
 {{Form::label('Title')}}
 {{Form::text('title',$post->title,[ 'placeholder'=>'enter post title','class'=>'form-control' ])}}
