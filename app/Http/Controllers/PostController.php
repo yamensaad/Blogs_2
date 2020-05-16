@@ -38,6 +38,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+      ///$postTittle = $request->input('title');
+      //return $postTittle;
+      
+      $post = new Post();
+      $post->title = $request->input('title');
+      $post->body = $request->input('body');
+      $post->save();
+      return redirect('/posts');
+
         
     }
 

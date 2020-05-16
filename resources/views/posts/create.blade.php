@@ -15,6 +15,10 @@
 {{Form::textarea('body','',[ 'placeholder'=>'enter post title','class'=>'form-control' ])}}
 </div>
 
+<div class="form-group pull-right">
+{{Form::submit('save',['class'=>'btn btn-primary'])}}
+</div>
+
 
 
 {!! Form::close() !!}
