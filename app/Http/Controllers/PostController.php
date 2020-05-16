@@ -41,7 +41,7 @@ class PostController extends Controller
       ///$postTittle = $request->input('title');
       //return $postTittle;
       $request->validate([
-          'title' =>'required',
+          'title' =>'bail|required|min:3',
           'body' => 'required'
 
       ]);
