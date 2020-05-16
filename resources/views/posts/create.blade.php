@@ -12,7 +12,7 @@
 
 <div class="form-group">
 {{Form::label('Body')}}
-{{Form::textarea('body','',[ 'placeholder'=>'enter post title','class'=>'form-control' ])}}
+{{Form::textarea('body','',[ 'placeholder'=>'enter post title','class'=>'form-control ckeditor'])}}
 </div>
 
 <div class="form-group pull-right">

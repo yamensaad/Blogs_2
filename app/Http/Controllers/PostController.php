@@ -91,7 +91,17 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title' =>'bail|required|min:3',
+            'body' => 'required' 
+        ]);
+
+            $post = Post::find($id);   //bring the post form database through the id    
+            $post->title = $request->input('title');
+            $post->body = $request->input('body');
+          
+            $post->save();
+            return redirect('/posts/'.$post->id)->with('success','Post Updated Successfully');
     }
 
     /**

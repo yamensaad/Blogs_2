@@ -6,6 +6,7 @@
     <title>{{ config('app.name','posts2') }}</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
  
 </head>
 <body>
