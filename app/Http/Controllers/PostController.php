@@ -45,9 +45,12 @@ class PostController extends Controller
           'body' => 'required'
 
       ]);
+      
       $post = new Post();
       $post->title = $request->input('title');
       $post->body = $request->input('body');
+      $slug = str_replace('','-',strtolower($post->title));
+
       $post->save();
 
       return redirect('/posts')->with('success','Post Created Successfully');
