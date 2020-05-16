@@ -2,19 +2,19 @@
 
 @section('content')
 
-@foreach($posts as $post)
-<div class="panel">
-<div class ="panel-heading">
-<h3>{{$post->title}}</h3>
-</div>
-<div class="panel-body">
-{{$post->body}}
-</div>
-</div>
-@endforeach
-{{$posts->links()}}
+<div class="col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Posts</div>
+                <div class="panel-body">
+                    @foreach($posts as $post)
+                        <a href="/posts/{{$post->id}}}" class="btn btn-primary btn-xs">
+                            {{$post->body }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+            
+        </div>
 
- <div classs= "alert alert-info">
-    
 
 @endsection
