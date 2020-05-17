@@ -1,26 +1,27 @@
 @extends('layouts.default')
 
 @section('content')
-<h1>Edit {{$post->title}}</h1>
-<hr/>
-{!! Form::open(['action'=>['PostController@update',$post->id] ,'method'=>'POST']) !!}
-{{Fom::hidden('_method','PUTT')}}
-<div class="form-group">
-{{Form::label('Title')}}
-{{Form::text('title',$post->title,[ 'placeholder'=>'enter post title','class'=>'form-control ckeditor' ])}}
-</div>
+<h1>Edit {{ $post->title }}</h1>
+<hr />
 
-<div class="form-group">
-{{Form::label('Body')}}
-{{Form::textarea('body',$post->body,[ 'placeholder'=>'enter post body','class'=>'form-control ckeditor' ])}}
-</div>
+{!! Form::open(['action'=> ['PostController@update', $post->id ], 'method'=>'POST' ])  !!}
 
-<div class="form-group pull-right">
-{{Form::submit('save',['class'=>'btn btn-primary'])}}
-</div>
+    {{ Form::hidden('_method', 'PUT') }}
+    
+    <div class="form-group">
+        {{ Form::label('Title') }}
+        {{ Form::text('title', $post->title, [ 'placeholder'=>'Enter Post Title', 'class'=>'form-control' ]) }}
+    </div>
 
+    <div class="form-group">
+        {{ Form::label('Body') }}
+        {{ Form::textarea('body', $post->body , [ 'placeholder'=>'Enter Post Body', 'class'=>'form-control ckeditor' ]) }}
+    </div>
 
+    <div class="form-group pull-right">
+        {{ Form::submit('Update', ['class'=>'btn btn-primary']) }}
+    </div>
 
-{!! Form::close() !!}
+{!! Form::close()  !!}
 
 @endsection
