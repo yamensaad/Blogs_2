@@ -9,7 +9,7 @@
         </a>
 
         <div class="pull-right">
-        {!! Form::open(['action'=> ['PostController@destroy', $post->id ], 'method'=>'POST' ])  !!}
+        {!! Form::open(['action'=> ['PostController@update', $post->id ], 'method'=>'POST' ])  !!}
                 {{ Form::hidden('_method', 'DELETE') }}     
                 <button class="btn btn-danger" type="submit">
                     <i class="fas fa-trash"></i> Delete Post

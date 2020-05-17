@@ -49,7 +49,8 @@ class PostController extends Controller
       $post = new Post();
       $post->title = $request->input('title');
       $post->body = $request->input('body');
-      $post->Slug = str_replace ('','-',strtolower($post->title));
+      $now = date('YmdHis');
+      $post->slug = str_slug($post->title) . '-' . $now;
       $post->save();
 
       return redirect('/posts')->with('success','Post Created Successfully');
