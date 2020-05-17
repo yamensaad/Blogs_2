@@ -8,6 +8,17 @@
             <i class='fas fa-edit'></i> Edit Post
         </a>
 
+        <div class="pull-right">
+        {!! Form::open(['action'=> ['PostController@destroy', $post->id ], 'method'=>'POST' ])  !!}
+                {{ Form::hidden('_method', 'DELETE') }}     
+                <button class="btn btn-danger" type="submit">
+                    <i class="fas fa-trash"></i> Delete Post
+                </button>
+
+            {!! Form::close() !!}
+        </div>
+    </div>
+
     <hr />
     <div>
         {!! $post->body !!}

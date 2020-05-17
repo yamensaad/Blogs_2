@@ -7,14 +7,18 @@
             <div class="panel">
                 <div class="panel-heading">
                     <h3>
-                        <a href="/posts/{{$post->id}}">
+                        <a href="/posts/{{$post->slug}}">
                             {{ $post->title }}
                         </a>
                     </h3>
                 </div>
 
                 <div class="panel-body">
-                    {{ $post->body }}
+                </div>
+                <div class="panel footer">
+                <span class="label info">
+                 <<i class='fas fa-edit'></i> Edit Post {{$post->created }}
+                </span>
                 </div>
             </div>
         @endforeach

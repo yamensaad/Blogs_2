@@ -6,7 +6,7 @@
 
 {!! Form::open(['action'=> ['PostController@update', $post->id ], 'method'=>'POST' ])  !!}
 
-    {{ Form::hidden('_method', 'PUT') }}
+    {{ Form::hidden('_method', 'PUT') }} 
     
     <div class="form-group">
         {{ Form::label('Title') }}

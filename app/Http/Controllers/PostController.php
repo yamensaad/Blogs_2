@@ -45,10 +45,11 @@ class PostController extends Controller
           'body' => 'required'
 
       ]);
-      
+
       $post = new Post();
       $post->title = $request->input('title');
       $post->body = $request->input('body');
+      $post->Slug = str_replace ('','-',strtolower($post->title));
       $post->save();
 
       return redirect('/posts')->with('success','Post Created Successfully');
@@ -58,12 +59,12 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     *\
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::find($id);
+        $post = Post::where('Slug',$slug)->first();  
         return view('posts.show',compact('post'));
 
     }
@@ -113,7 +114,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('/posts'.$post->id)->with('success','Post Deleted Successfully');
+        return redirect('/posts')->with('success','Post Deleted Successfully');
 
     
     }
