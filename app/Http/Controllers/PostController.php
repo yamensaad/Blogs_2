@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Post;
 
 class PostController extends Controller
@@ -16,7 +17,7 @@ class PostController extends Controller
     public function __construct()
     {
         $this->middleware('auth',['except'=>['index','show']]);
-            
+
     }
 
 
@@ -50,7 +51,7 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
       ///$postTittle = $request->input('title');
       //return $postTittle;
       $request->validate([
@@ -58,12 +59,15 @@ class PostController extends Controller
           'body' => 'required'
 
       ]);
-
+      //current user 
+      $user = Auth::user();
+     
       $post = new Post();
       $post->title = $request->input('title');
       $post->body = $request->input('body');
       $now = date('YmdHis');
-      $post->slug = str_slug($post->title) . '-' . $now;
+      $post->slug = Str::slug($post->title) . '-' . $now;
+      $post->user_id = $user->id;   
       $post->save();
 
       return redirect('/posts')->with('success','Post Created Successfully');
@@ -78,8 +82,9 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $post = Post::where('Slug',$slug)->first();  
-        return view('posts.show',compact('post'));
+        $post = Post::where('slug',$slug)->first();
+
+        return view('posts.show', compact('post'));
 
     }
 
