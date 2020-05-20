@@ -17,7 +17,14 @@
       <li class="nav-item">
         <a class="nav-link" href="/posts">Posts</a>
       </li>
-      
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+         <!-- Right Side Of Navbar -->
+          <ul class="navbar-nav ml-auto"></ul>
     </ul>
   </div>
 </nav>
