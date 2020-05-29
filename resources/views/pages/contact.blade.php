@@ -4,6 +4,6 @@
 
 @section('content')
 
-<button>  Form::submit('Click Me!'); </button>
+<button> (Click Me) </button>
 
 @endsection

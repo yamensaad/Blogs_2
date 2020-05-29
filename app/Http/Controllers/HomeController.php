@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
+     * REQ <====> RESPONSE
      * Create a new controller instance.
      *
      * @return void
