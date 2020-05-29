@@ -18,6 +18,7 @@ Route::get('/','pagesController@index');
 Route::get('about','pagesController@index')->name('aboutpage');
 Route::get('contact','pagesController@contact');
 Route::resource('posts','PostController'); 
+Route::post('/dosend','pagesController@dosend');
 
 Auth::routes();
 
