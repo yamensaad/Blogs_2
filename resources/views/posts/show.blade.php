@@ -22,6 +22,7 @@
     </div>
     @endif
     <hr />
+    <img src="{{ asset('images/posts/'.$post->photo) }}" class="img-responsive" />
     <div>
         {!! $post->body !!}
 

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Post;
-
+use Image;
 class PostController extends Controller
 {
 
@@ -73,6 +73,17 @@ class PostController extends Controller
       $post->slug = Str::slug($post->title) . '-' . $now;
       $post->user_id = $user->id;   
       $post->save();
+        
+      //Upload the featured image if any
+      if($request->hasFile('photo')){
+          $photo = $request->photo;
+          $filename = time().'-'.$photo->getClientOriginalNamme();
+          $location = public_path('images'.$filename);
+          Image::make($photo)->resize(800,400)->save($location);
+          $post->photo = $filename;
+      }
+
+
 
       return redirect('/posts')->with('success','Post Created Successfully');
         
@@ -124,7 +135,8 @@ class PostController extends Controller
     {
         $request->validate([
             'title' =>'bail|required|min:3',
-            'body' => 'required' 
+            'body' => 'required',
+            'photo' => 'images|mimes:jpeg,png,jpg|max:2048'
         ]);
 
             $post = Post::find($id);   //bring the post form database through the id    

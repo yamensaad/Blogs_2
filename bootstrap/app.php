@@ -1,5 +1,6 @@
 <?php
 
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -41,9 +42,10 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+
 /*
 |--------------------------------------------------------------------------
-| Return The Application
+| Return The Applicat        Intervention\Image\ImageServiceProvider::classion
 |--------------------------------------------------------------------------
 |
 | This script returns the application instance. The instance is given to
@@ -51,5 +53,9 @@ $app->singleton(
 | from the actual running of the application and sending responses.
 |
 */
+
+
+    
+
 
 return $app;

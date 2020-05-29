@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateCommentsTable extends Migration
 {
@@ -14,12 +14,13 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->increaments('id');
-            $tabel->integer('user_id')->unsigned();
-            $tabel->integer('post_id');
-            $tabel->text('body');
+            $table->increments('id');
+            $table->integer('user_id')->unsigned();
+            $table->unsignedInteger('post_id');
+            $table->text('body');
             $table->timestamps();
-            $tabel->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
         });
     }
 
