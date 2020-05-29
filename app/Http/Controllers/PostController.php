@@ -18,6 +18,9 @@ class PostController extends Controller
     {
         $this->middleware('auth',['except'=>['index','show']]);
 
+        //every request should be authenticatied
+
+
     }
 
 
@@ -61,6 +64,7 @@ class PostController extends Controller
       ]);
       //current user 
       $user = Auth::user();
+        
      
       $post = new Post();
       $post->title = $request->input('title');
@@ -98,6 +102,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         return view('posts.edit',compact('post'));
+        
+        $user = Auth::id();
         
     }
 
