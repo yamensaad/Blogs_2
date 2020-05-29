@@ -19,7 +19,9 @@ Route::get('about','pagesController@index')->name('aboutpage');
 Route::get('contact','pagesController@contact');
 Route::resource('posts','PostController'); 
 Route::post('/dosend','pagesController@dosend');
+Route::post('/comments/{slug}','CommentsController@store')->name('comments.store');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
