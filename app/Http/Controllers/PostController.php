@@ -100,11 +100,17 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        //
         $post = Post::find($id);
-        return view('posts.edit',compact('post'));
-        
-        $user = Auth::id();
-        
+
+        //Current User Id
+        $userId = Auth::id();
+        if ($post->user_id !== $userId ) {
+            return redirect('/posts')->with('error', 'That is not your post yaaaad!!!!');
+        }
+
+        $tags = Tag::all();
+        return view('posts.edit', compact('post', 'tags'));
     }
 
     /**
@@ -124,7 +130,12 @@ class PostController extends Controller
             $post = Post::find($id);   //bring the post form database through the id    
             $post->title = $request->input('title');
             $post->body = $request->input('body');
-          
+
+            $userId = Auth::id();
+            if ($post->user_id !== $userId ) {
+                return redirect('/posts')->with('error', 'That is not your post yaaaad!!!!');
+            }
+    
             $post->save();
             return redirect('/posts/'.$post->id)->with('success','Post Updated Successfully');
     }
@@ -138,6 +149,11 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $userId = Auth::id();
+        if ($post->user_id !== $userId ) {
+            return redirect('/posts')->with('error', 'That is not your post yaaaad!!!!');
+        }
+
         $post->delete();
         return redirect('/posts')->with('success','Post Deleted Successfully');
 

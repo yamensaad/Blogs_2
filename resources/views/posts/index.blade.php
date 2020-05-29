@@ -19,7 +19,11 @@
                 <span class="label info">
                  <<i class='fas fa-edit'></i> Edit Post {{$post->created }}
                 </span>
+               &nbsp 
                 </div>
+                <span class="label-primary">
+                 <<i class='fas fa-user'></i> Edit Post {{$post->user->name}}
+                </span>
             </div>
             
         @endforeach

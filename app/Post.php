@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    //protected $table = 'ma posts';
+
+    public function user(){
+        return $this->belongTo('App\User');
+        
+
+    }
+
 }
+
